@@ -26,10 +26,22 @@ import uk.ac.starlink.ttools.taplint.Reporter;
  */
 public enum Stage
 {
-    CAP_XML("CPV", new ValidateCapabilitiesXsd()), CAPABILITIES("CAP", new ValidateCapabilities()), AVAIL_XML("AVV",
-            new ValidateAvailabilityXsd()), EXAMPLES("EXM", null), SERVICE_DESC("SVD",
-                    new ValidateServiceDescriptor()), ERR_VAL("ERR",
-                            null), SYNC("SYN", new ValidateSync()), ASYNC("ASY", new ValidateAsync());
+    /** Validate the capabilities document with the schema */
+    CAP_XML("CPV", new ValidateCapabilitiesXsd()),
+    /** Validate the capabilities document using targeted rules */
+    CAPABILITIES("CAP", new ValidateCapabilities()),
+    /** Validate the availability document with the schema */
+    AVAIL_XML("AVV", new ValidateAvailabilityXsd()),
+    /** Validate the examples document (not yet supported) */
+    EXAMPLES("EXM", null),
+    /** Validate the service description in the capabilities document. */
+    SERVICE_DESC("SVD", new ValidateServiceDescriptor()),
+    /** Test an error response. */
+    ERR_VAL("ERR", null),
+    /** Validate the sync endpoint. */
+    SYNC("SYN", new ValidateSync()),
+    /** Validate the async endpoint. */
+    ASYNC("ASY", new ValidateAsync());
 
     private static Map<String, Stage> codeMap;
 

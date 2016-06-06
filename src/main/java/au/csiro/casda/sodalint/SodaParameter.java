@@ -24,12 +24,19 @@ import org.apache.commons.lang3.StringUtils;
  */
 public enum SodaParameter
 {
+    /** The ID image selection parameter*/
     ID("meta.ref.url;meta.curation", "", "char", "*", ""), 
+    /** The general POS filter parameter for spatial regions. */
     POS("phys.angArea;obs", "", "char", "*", ""), 
+    /** The BAND filter parameter for wavelength cutouts. */
     BAND("em.wl", "m", "double", "*", "interval"), 
+    /** The TIME filter parameter for time cutouts. */
     TIME("time.interval;obs.exposure", "d", "double", "*", "interval"), 
+    /** The POL filter parameter for polarisation cutouts. */
     POL("meta.code;phys.polarization", "", "char", "*", ""), 
+    /** The CIRCLE filter parameter for spatial cutouts. */
     CIRCLE("phys.angArea;obs", "deg", "double", "3", "circle"), 
+    /** The POLYGON filter parameter for spatial cutouts. */
     POLYGON("phys.angArea;obs", "deg", "double", "*", "polygon");
     
     private final Map<String, String> requiredAttribs;

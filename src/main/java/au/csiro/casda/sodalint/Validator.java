@@ -54,7 +54,8 @@ public class Validator
         Response response = Request.Get(address).execute();
         HttpResponse httpResponse = response.returnResponse();
         StatusLine statusLine = httpResponse.getStatusLine();
-        if (statusLine.getStatusCode() != 200)
+        final int statusCodeOk = 200;
+        if (statusLine.getStatusCode() != statusCodeOk)
         {
             throw new HttpResponseException(statusLine.getStatusCode(), statusLine.getReasonPhrase());
         }
@@ -86,7 +87,7 @@ public class Validator
      */
     protected String readTextContent(HttpEntity entity) throws IOException
     {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(entity.getContent())))
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(entity.getContent(), "UTF-8")))
         {
             StringBuilder sb = new StringBuilder();
             String line = reader.readLine();
@@ -104,6 +105,10 @@ public class Validator
         }
     }
 
+    /**
+     * Output the xml source of the document to the log for debug purposes. 
+     * @param document The document to be output.
+     */
     protected void logDocumentContent(Document document)
     {
         OutputFormat format = new OutputFormat(document);

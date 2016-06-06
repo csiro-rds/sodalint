@@ -53,7 +53,7 @@ public class ValidateServiceDescriptorTest
      *             If the data file cannot be read.
      */
     @Test
-    public void testVerifyV1_3ServiceDescriptor() throws IOException
+    public void testVerifyV13ServiceDescriptor() throws IOException
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(baos);
@@ -73,7 +73,7 @@ public class ValidateServiceDescriptorTest
      *             If the data file cannot be read.
      */
     @Test
-    public void testVerifyV1_2ServiceDescriptor() throws IOException
+    public void testVerifyV12ServiceDescriptor() throws IOException
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(baos);
@@ -93,7 +93,7 @@ public class ValidateServiceDescriptorTest
      *             If the data file cannot be read.
      */
     @Test
-    public void testVerifyV1_3BadParamServiceDescriptor() throws IOException
+    public void testVerifyV13BadParamServiceDescriptor() throws IOException
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(baos);
@@ -123,7 +123,7 @@ public class ValidateServiceDescriptorTest
      * @throws SAXException
      */
     @Test
-    public void testVotlintV1_2Service() throws IOException, SAXException
+    public void testVotlintV12Service() throws IOException, SAXException
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(baos);
@@ -144,7 +144,7 @@ public class ValidateServiceDescriptorTest
      * @throws SAXException
      */
     @Test
-    public void testVotlintV1_3Service() throws IOException, SAXException
+    public void testVotlintV13Service() throws IOException, SAXException
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(baos);
@@ -165,7 +165,7 @@ public class ValidateServiceDescriptorTest
      * @throws SAXException
      */
     @Test
-    public void testVotlintBadV1_3Service() throws IOException, SAXException
+    public void testVotlintBadV13Service() throws IOException, SAXException
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(baos);

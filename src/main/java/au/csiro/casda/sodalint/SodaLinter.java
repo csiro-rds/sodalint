@@ -49,15 +49,14 @@ public class SodaLinter
      * @param testDataProductId
      *            id of a valid data product which can be tested
      * @return SODA validator executable
+     * @throws TaskException if the stage code is not recognised.
      */
     public Executable createExecutable(final Reporter reporter, final URL serviceUrl, Set<String> stageCodeSet,
             final String testDataProductId) throws TaskException
     {
 
-        /*
-         * Prepare a checked and ordered sequence of codes determining which stages will be executed. Note the order is
-         * that defined by the list of known codes, not that defined by the input set.
-         */
+         // Prepare a checked and ordered sequence of codes determining which stages will be executed. Note the order is
+         //that defined by the list of known codes, not that defined by the input set.
         List<String> unknownCodes = new ArrayList<>();
         final Set<Stage> stages = new TreeSet<>();
         for (String code : stageCodeSet)
@@ -133,12 +132,19 @@ public class SodaLinter
         return new String[] { versionLine, codesLine };
     }
 
+    /**
+     * Command line handler for SodaLinter
+     * @param args The command line arguments
+     * @throws Exception If an otherwise uncaught error occurs.
+     */
     public static void main(String[] args) throws Exception
     {
         SodaLinter linter = new SodaLinter();
         String[] stages = null;
-        int maxRepeat = 9;
-        int maxLineLen = 1024;
+        final int defaultMaxRepeat = 9;
+        final int defaultMaxLineLen = 1024;
+        int maxRepeat = defaultMaxRepeat;
+        int maxLineLen = defaultMaxLineLen;
         String sodaUrl = null;
         boolean error = false;
 
