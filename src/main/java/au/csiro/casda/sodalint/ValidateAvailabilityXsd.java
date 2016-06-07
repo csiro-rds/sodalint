@@ -17,7 +17,7 @@ import uk.ac.starlink.ttools.taplint.XsdStage;
  */
 
 /**
- * Validate the SODA availability document against the XML schema. 
+ * Validate the SODA availability document against the XML schema.
  * <p>
  * Copyright 2016, CSIRO Australia. All rights reserved.
  */
@@ -28,10 +28,9 @@ public class ValidateAvailabilityXsd implements SodaValidationTask
     @Override
     public void run(Reporter reporter, SodaService sodaService, String testDataProductId)
     {
-        XsdStage tcapXsdStage = XsdStage.createXsdStage( IvoaSchemaResolver.AVAILABILITY_URI,
-                                 "availability", "/availability", true,
-                                 "availability" );
-        
+        XsdStage tcapXsdStage = XsdStage.createXsdStage(IvoaSchemaResolver.AVAILABILITY_URI, "availability",
+                "/availability", true, "availability");
+
         tcapXsdStage.run(reporter, sodaService.getServiceUrl());
     }
 

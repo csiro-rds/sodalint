@@ -34,6 +34,10 @@ public class SodaService
     private Node syncServiceNode;
     private Node asyncServiceNode;
 
+    /**
+     * Create a new SodaService instance.
+     * @param serviceUrl The base url of the SODA service to be validated.
+     */
     public SodaService(URL serviceUrl)
     {
         this.serviceUrl = serviceUrl;

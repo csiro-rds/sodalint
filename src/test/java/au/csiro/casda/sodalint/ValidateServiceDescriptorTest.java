@@ -36,6 +36,7 @@ import uk.ac.starlink.ttools.taplint.Reporter;
 public class ValidateServiceDescriptorTest
 {
 
+    private static final String CHARSET_UTF_8 = "UTF-8";
     private ValidateServiceDescriptor vsd;
 
     @Before
@@ -45,8 +46,7 @@ public class ValidateServiceDescriptorTest
     }
 
     /**
-     * Test method for
-     * {@link au.csiro.casda.sodalint.ValidateServiceDescriptor#verifyServiceDescriptor(uk.ac.starlink.ttools.taplint.Reporter, java.lang.String)}
+     * Test method forau.csiro.casda.sodalint.ValidateServiceDescriptor#verifyServiceDescriptor
      * .
      * 
      * @throws IOException
@@ -56,12 +56,12 @@ public class ValidateServiceDescriptorTest
     public void testVerifyV13ServiceDescriptor() throws IOException
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PrintStream ps = new PrintStream(baos);
+        PrintStream ps = new PrintStream(baos, false, CHARSET_UTF_8);
         Reporter reporter = new Reporter(ps, ReportType.values(), 10, false, 1024);
         String xmlContent = FileUtils.readFileToString(new File("src/test/resources/service-descriptor-v1_3-good.xml"));
         vsd.verifyServiceDescriptor(reporter, xmlContent);
 
-        String result = baos.toString();
+        String result = baos.toString(CHARSET_UTF_8);
         System.out.println(result);
         assertEquals("No message should have been reported", "", result);
     }
@@ -76,12 +76,12 @@ public class ValidateServiceDescriptorTest
     public void testVerifyV12ServiceDescriptor() throws IOException
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PrintStream ps = new PrintStream(baos);
+        PrintStream ps = new PrintStream(baos, false, CHARSET_UTF_8);
         Reporter reporter = new Reporter(ps, ReportType.values(), 10, false, 1024);
         String xmlContent = FileUtils.readFileToString(new File("src/test/resources/service-descriptor-v1_2-good.xml"));
         vsd.verifyServiceDescriptor(reporter, xmlContent);
 
-        String result = baos.toString();
+        String result = baos.toString(CHARSET_UTF_8);
         System.out.println(result);
         assertEquals("No message should have been reported", "", result);
     }
@@ -96,13 +96,13 @@ public class ValidateServiceDescriptorTest
     public void testVerifyV13BadParamServiceDescriptor() throws IOException
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PrintStream ps = new PrintStream(baos);
+        PrintStream ps = new PrintStream(baos, false, CHARSET_UTF_8);
         Reporter reporter = new Reporter(ps, ReportType.values(), 10, false, 1024);
         String xmlContent =
                 FileUtils.readFileToString(new File("src/test/resources/service-descriptor-v1_3-badparams.xml"));
         vsd.verifyServiceDescriptor(reporter, xmlContent);
 
-        String result = baos.toString();
+        String result = baos.toString(CHARSET_UTF_8);
         System.out.println(result);
         String[] expectedMessages = new String[] { "E-SDMP-01 Required service descriptor ID PARAM is missing.",
                 "E-SDIP-01 Service descriptor POS PARAM should have an attribute ucd with the value 'phys.angArea;obs'.",
@@ -126,12 +126,12 @@ public class ValidateServiceDescriptorTest
     public void testVotlintV12Service() throws IOException, SAXException
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PrintStream ps = new PrintStream(baos);
+        PrintStream ps = new PrintStream(baos, false, CHARSET_UTF_8);
         Reporter reporter = new Reporter(ps, ReportType.values(), 10, false, 1024);
         String xmlContent = FileUtils.readFileToString(new File("src/test/resources/service-descriptor-v1_2-good.xml"));
         vsd.verifyResponseWithVotLint(reporter, xmlContent);
 
-        String result = baos.toString();
+        String result = baos.toString(CHARSET_UTF_8);
         System.out.println(result);
         assertEquals("No message should have been reported", "", result);
     }
@@ -147,12 +147,12 @@ public class ValidateServiceDescriptorTest
     public void testVotlintV13Service() throws IOException, SAXException
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PrintStream ps = new PrintStream(baos);
+        PrintStream ps = new PrintStream(baos, false, CHARSET_UTF_8);
         Reporter reporter = new Reporter(ps, ReportType.values(), 10, false, 1024);
         String xmlContent = FileUtils.readFileToString(new File("src/test/resources/service-descriptor-v1_3-good.xml"));
         vsd.verifyResponseWithVotLint(reporter, xmlContent);
 
-        String result = baos.toString();
+        String result = baos.toString(CHARSET_UTF_8);
         System.out.println(result);
         assertEquals("No message should have been reported", "", result);
     }
@@ -168,13 +168,13 @@ public class ValidateServiceDescriptorTest
     public void testVotlintBadV13Service() throws IOException, SAXException
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PrintStream ps = new PrintStream(baos);
+        PrintStream ps = new PrintStream(baos, false, CHARSET_UTF_8);
         Reporter reporter = new Reporter(ps, ReportType.values(), 10, false, 1024);
         String xmlContent =
                 FileUtils.readFileToString(new File("src/test/resources/service-descriptor-v1_3-badref.xml"));
         vsd.verifyResponseWithVotLint(reporter, xmlContent);
 
-        String result = baos.toString();
+        String result = baos.toString(CHARSET_UTF_8);
         System.out.println(result);
         assertEquals("Message should have been reported",
                 "E-VOFY-01 : ID bad referenced from PARAM (l.30, c.29) never found", result.trim());

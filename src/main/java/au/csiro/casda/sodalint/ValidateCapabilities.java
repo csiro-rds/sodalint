@@ -91,6 +91,16 @@ public class ValidateCapabilities extends Validator implements SodaValidationTas
         return null;
     }
 
+    /**
+     * Validate the content of the capabilities element.
+     * 
+     * @param reporter
+     *            validation message destination
+     * @param xmlContent
+     *            The capabilities XML text
+     * @param sodaService
+     *            The service being tested.
+     */
     void validateCapabilities(Reporter reporter, String xmlContent, SodaService sodaService)
     {
         try
@@ -130,7 +140,9 @@ public class ValidateCapabilities extends Validator implements SodaValidationTas
      * @param document
      *            The capabilities XML document
      * @param sodaService
+     *            The service being tested.
      * @throws XPathExpressionException
+     *             If ther eis acoding error in the xpath expression.
      */
     private void checkForSyncAsync(Reporter reporter, Document document, SodaService sodaService)
             throws XPathExpressionException

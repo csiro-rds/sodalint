@@ -122,6 +122,15 @@ public class ValidateServiceDescriptor extends Validator implements SodaValidati
         return null;
     }
 
+    /**
+     * Run targeted verification of the service descriptor XML text, including its presence and the support for standard
+     * SODA parameters.
+     * 
+     * @param reporter
+     *            The validation message destination
+     * @param xmlContent
+     *            The xml text of the service description.
+     */
     void verifyServiceDescriptor(Reporter reporter, String xmlContent)
     {
         try
