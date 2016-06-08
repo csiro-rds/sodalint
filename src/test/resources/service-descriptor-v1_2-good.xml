@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--  Known good example of a service descriptor -->
+<vot:VOTABLE version="1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:vot="http://www.ivoa.net/xml/VOTable/v1.2" xmlns:stc="http://www.ivoa.net/xml/STC/v1.30">
+
+	<vot:RESOURCE type="meta" utype="adhoc:service" name="this">
+		<vot:PARAM name="standardID" datatype="char" arraysize="*"
+			value="ivo://ivoa.net/std/SODA#sync-1.0" />
+
+		<vot:PARAM name="accessURL" datatype="char" arraysize="*"
+			value="http://example.com/SODA/sync" />
+
+		<vot:GROUP name="inputParams">
+			<vot:PARAM name="ID" ucd="meta.ref.url;meta.curation" datatype="char"
+				arraysize="*" />
+
+			<vot:PARAM name="POS" ucd="phys.angArea;obs" datatype="char"
+				arraysize="*">
+			</vot:PARAM>
+			<vot:PARAM name="CIRCLE" ucd="phys.angArea;obs" unit="deg" datatype="double"
+				arraysize="3" xtype="circle">
+			</vot:PARAM>
+			<vot:PARAM name="POLYGON" ucd="phys.angArea;obs" unit="deg" datatype="double"
+				arraysize="*" xtype="polygon">
+			</vot:PARAM>
+			<vot:PARAM name="BAND" ucd="em.wl" unit="m" datatype="double"
+				arraysize="*" xtype="interval">
+			</vot:PARAM>
+			<vot:PARAM name="TIME" ucd="time.interval;obs.exposure" unit="d"
+				datatype="double" arraysize="*" xtype="interval">
+			</vot:PARAM>
+			<vot:PARAM name="POL" ucd="meta.code;phys.polarization" datatype="char"
+				arraysize="*">
+			</vot:PARAM>
+		</vot:GROUP>
+	</vot:RESOURCE>
+</vot:VOTABLE>
