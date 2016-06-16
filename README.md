@@ -15,7 +15,7 @@ Usage
 The command line can be used as follows:
  
 ```
-java -jar sodalint-full.jar 
+java -jar sodalint-all-1.0.1.jar 
 		[stages="CPV|CAP|AVV|EXM|SVD|ERR|SYN|ASY[ ...]"]
 		[maxrepeat=<int-value>]
 		[truncate=<int-value>]
@@ -29,7 +29,7 @@ The parameters are:
   * AVV: Validate the availability document with the schema
   * EXM: Validate the examples document (not yet supported)
   * SVD: Validate the service description returned by an empty sync query.
-  * ERR: Test the response to an erroroneous query (not yet supported).
+  * ERR: Test the response to an erroneous query (not yet supported).
   * SYN: Validate the sync endpoint.
   * ASY: Validate the async endpoint.
   
@@ -43,7 +43,7 @@ The parameters are:
 Example
 -------
 ```
-java -jar sodalint-full.jar stages="CPV AVV CAP SVD ASY" https://casda.csiro.au/casda_data_access/data/
+java -jar sodalint-all-1.0.1.jar stages="CPV AVV CAP SVD ASY" https://casda.csiro.au/casda_data_access/data/
 ```
 
 This will run the CPV, CAP, AVV, SVD, ASY stages (in that order) against the CASDA SODA service. The default maxrepeat and line length values are used. 
@@ -60,7 +60,7 @@ Build
 To build the project, checkout the project, cd to the project folder and use the following command line
 
 ``` 
-gradlew clean build fatjar
+gradlew clean build alljar
 ```
 
 Note that while most libraries will be automatically retrieved by this build process, some are not available in public repositories and must be sourced manually and then locally installed. These are listed below.
