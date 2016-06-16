@@ -147,11 +147,11 @@ public class ValidateCapabilities extends Validator implements SodaValidationTas
     private void checkForSyncAsync(Reporter reporter, Document document, SodaService sodaService)
             throws XPathExpressionException
     {
-        String sodaStdIdPrefix = "ivo://ivoa.net/std/SODA";
-        String sodaStdIdSync = "ivo://ivoa.net/std/SODA#sync-1.0.";
-        String sodaStdIdAsync = "ivo://ivoa.net/std/SODA#async-1.0.";
-        String accessDataStdIdSync = "ivo://ivoa.net/std/AccessData#sync";
-        String accessDataStdIdAsync = "ivo://ivoa.net/std/AccessData#async";
+        final String sodaStdIdPrefix = "ivo://ivoa.net/std/SODA";
+        final String sodaStdIdSync = "ivo://ivoa.net/std/SODA#sync-1.0";
+        final String sodaStdIdAsync = "ivo://ivoa.net/std/SODA#async-1.0";
+        final String accessDataStdIdSync = "ivo://ivoa.net/std/AccessData#sync";
+        final String accessDataStdIdAsync = "ivo://ivoa.net/std/AccessData#async";
 
         XPath xpath = XPathFactory.newInstance().newXPath();
 
@@ -198,7 +198,7 @@ public class ValidateCapabilities extends Validator implements SodaValidationTas
         {
             if (hasSoda)
             {
-                reporter.report(SodaCode.E_CPEP, "SODA endpoints found but do not have v1.0. sync or async qualifiers");
+                reporter.report(SodaCode.E_CPEP, "SODA endpoints found but they do not have v1.0 sync or async qualifiers");
             }
             else
             {
