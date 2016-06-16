@@ -15,7 +15,7 @@ Usage
 The command line can be used as follows:
  
 ```
-java -jar sodalint-all-1.0.1.jar 
+java -jar sodalint-all-1.0.2.jar 
 		[stages="CPV|CAP|AVV|EXM|SVD|ERR|SYN|ASY[ ...]"]
 		[maxrepeat=<int-value>]
 		[truncate=<int-value>]
@@ -43,7 +43,7 @@ The parameters are:
 Example
 -------
 ```
-java -jar sodalint-all-1.0.1.jar stages="CPV AVV CAP SVD ASY" https://casda.csiro.au/casda_data_access/data/
+java -jar sodalint-all-1.0.2.jar stages="CPV AVV CAP SVD ASY" https://casda.csiro.au/casda_data_access/data/
 ```
 
 This will run the CPV, CAP, AVV, SVD, ASY stages (in that order) against the CASDA SODA service. The default maxrepeat and line length values are used. 
