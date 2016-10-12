@@ -67,6 +67,8 @@ public class ValidateCapabilities extends Validator implements SodaValidationTas
         String address = baseUrl + "capabilities";
         try
         {
+            reporter.report(SodaCode.I_VURL, "Validating URL: " + address);
+            
             String content = getXmlContentFromUrl(address);
             if (content == null)
             {

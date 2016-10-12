@@ -1,5 +1,7 @@
 package au.csiro.casda.sodalint;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,6 +9,7 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -37,6 +40,8 @@ import uk.ac.starlink.ttools.taplint.Reporter;
 public class SodaLinter
 {
 
+    private static final String SODA_VERSION = "PR-SODA-1.0-20160920";
+    
     /**
      * Creates and returns an executable for TAP validation.
      *
@@ -106,9 +111,9 @@ public class SodaLinter
     {
 
         /* Version report. */
-        String versionLine = new StringBuilder().append("This is sodalint, ")
-                // .append( Stilts.getVersion() )
-                .toString();
+        String version = getSodaLintVersion();
+        String versionLine = new StringBuilder().append("This is sodalint ").append(version)
+                .append(" validating against ").append(SODA_VERSION).toString();
 
         /* Count by report type of known FixedCode instances. */
         Map<ReportType, int[]> codeMap = new LinkedHashMap<ReportType, int[]>();
@@ -130,6 +135,25 @@ public class SodaLinter
 
         /* Return lines. */
         return new String[] { versionLine, codesLine };
+    }
+
+    private static String getSodaLintVersion()
+    {
+        Properties props = new Properties();
+        try
+        {
+            InputStream resourceAsStream = SodaLinter.class.getResourceAsStream("/version.properties");
+            if (resourceAsStream != null)
+            {
+                props.load(resourceAsStream);
+            }
+        }
+        catch (IOException e)
+        {
+            System.out.println("Unable to load version.properties: " + e.getMessage());
+        }
+        String version = props.getProperty("build.number");
+        return version == null ? "" : version;
     }
 
     /**

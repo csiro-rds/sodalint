@@ -35,7 +35,7 @@ dependencies {
     compile('org.apache.httpcomponents:fluent-hc:4.5.2') 
      // For things like RandomStringUtils, StringUtils
     compile("org.apache.commons:commons-lang3:3.4")
-    compile("org.apache.ws.commons:ws-commons-util:1.0.1")
+    //compile("org.apache.ws.commons:ws-commons-util:1.0.1")
 
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the
@@ -43,7 +43,7 @@ dependencies {
     // 'test.useTestNG()' to your build script.
     testCompile 'junit:junit:4.12'
     // For things like FilenameUtils
-    compile('commons-io:commons-io:2.4')
+    testCompile('commons-io:commons-io:2.4')
 }
 
 

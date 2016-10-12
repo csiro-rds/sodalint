@@ -2,7 +2,7 @@ SODA Lint
 =========
 
 This program validates a Service-side Operations for Data Access (SODA) Virtual 
-Observatory service for compliance with the SODA v1 specification. 
+Observatory service for compliance with the SODA v1 specification (PR-SODA-1.0-20160920). 
 It can be used either as a library or as a command line tool. 
 
 SODALint is intended for use both by central validation services and teams implementing SODA services.
@@ -37,7 +37,7 @@ The parameters are:
 
 * truncate: The maximum line length that will be output. The default value is 1024.
 
-* sodaurl: The url to be tested. The prefix is optional. 	 
+* sodaurl: The url to be tested. This should be the base url for the service, which is the parent of the capabilities endpoint. The prefix is optional. 	 
 
 
 Example

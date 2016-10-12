@@ -18,7 +18,7 @@
 				 />
 
 			<PARAM name="POS" ucd="phys.angArea;obs;a" datatype="char"
-				arraysize="*">
+				arraysize="*" xtype="region">
 			</PARAM>
 			<PARAM name="POLYGON" ucd="phys.angArea;obs" unit="deg" datatype="double"
 				arraysize="*" xtype="polygon">

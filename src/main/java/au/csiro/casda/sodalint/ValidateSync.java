@@ -48,6 +48,8 @@ public class ValidateSync extends Validator implements SodaValidationTask
         try
         {
             URL syncUrl = sodaService.getUrlFromCapabilityNode(syncNode);
+            reporter.report(SodaCode.I_VURL, "Validating URL: " + syncUrl);
+
             // Check endpoint exists
             getSyncContent(reporter, syncUrl);
         }

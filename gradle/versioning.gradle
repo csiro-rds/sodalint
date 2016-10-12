@@ -57,7 +57,8 @@ task makeVersionProps (type:Copy) {
     from("${projectDir}/gradle/version.properties.template")
     rename('.+',"version.properties")
     expand(version: version, date: new Date().format('dd MMM yyyy'), timestamp: buildTimestamp)
-    into "${buildDir}/resources/main/resources/"
+    into "${buildDir}/resources/main/"
 }
 
+jar.dependsOn makeVersionProps
 makeVersionProps.mustRunAfter processResources

@@ -108,7 +108,8 @@ public class ValidateServiceDescriptorTest
                 "E-SDIP-01 Service descriptor POS PARAM should have an attribute ucd with the value 'phys.angArea;obs'.",
                 "E-SDIP-02 Service descriptor BAND PARAM should have an attribute unit with the value 'm'.",
                 "E-SDIP-03 Service descriptor BAND PARAM should have an attribute xtype with the value 'interval'.",
-                "E-SDIP-04 Service descriptor TIME PARAM should have an attribute arraysize with the value '*'.",
+                "E-SDIP-04 Service descriptor BAND PARAM should have an attribute arraysize with the value '2'.",
+                "E-SDIP-05 Service descriptor TIME PARAM should have an attribute arraysize with the value '2'.",
                 "W-SDSP-01 Standard service descriptor CIRCLE PARAM is missing." };
 
         assertEquals("Messages should have been reported", StringUtils.join(expectedMessages, System.lineSeparator()),

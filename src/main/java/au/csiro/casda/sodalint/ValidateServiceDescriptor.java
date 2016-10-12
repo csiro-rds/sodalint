@@ -64,6 +64,8 @@ public class ValidateServiceDescriptor extends Validator implements SodaValidati
         try
         {
             URL syncUrl = sodaService.getUrlFromCapabilityNode(syncNode);
+            reporter.report(SodaCode.I_VURL, "Validating URL: " + syncUrl);
+            
             // Check endpoint exists
             String content = getSyncContent(reporter, syncUrl);
             if (StringUtils.isBlank(content))

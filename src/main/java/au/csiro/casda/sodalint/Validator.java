@@ -65,7 +65,8 @@ public class Validator
             return null;
         }
         ContentType contentType = ContentType.getOrDefault(entity);
-        if (!ContentType.APPLICATION_XML.getMimeType().equals(contentType.getMimeType()))
+        if (!ContentType.APPLICATION_XML.getMimeType().equals(contentType.getMimeType())
+                && !ContentType.TEXT_XML.getMimeType().equals(contentType.getMimeType()))
         {
             throw new UnsupportedEncodingException(contentType.toString());
         }
