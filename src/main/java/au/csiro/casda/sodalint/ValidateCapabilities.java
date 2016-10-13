@@ -22,6 +22,7 @@ import org.xml.sax.SAXException;
 
 import uk.ac.starlink.ttools.taplint.FixedCode;
 import uk.ac.starlink.ttools.taplint.Reporter;
+import uk.ac.starlink.ttools.taplint.TextOutputReporter;
 
 /*
  * #%L
@@ -53,7 +54,8 @@ public class ValidateCapabilities extends Validator implements SodaValidationTas
         {
             validateCapabilities(reporter, xmlContent, sodaService);
         }
-        reporter.summariseUnreportedMessages(reporter.getSectionCode());
+        TextOutputReporter textOutputReporter = (TextOutputReporter)reporter;
+        textOutputReporter.summariseUnreportedMessages(textOutputReporter.getSectionCode());
     }
 
     private String getCapabilities(final Reporter reporter, URL serviceUrl)

@@ -15,6 +15,7 @@ import org.xml.sax.SAXException;
 
 import uk.ac.starlink.ttools.taplint.ReportType;
 import uk.ac.starlink.ttools.taplint.Reporter;
+import uk.ac.starlink.ttools.taplint.TextOutputReporter;
 
 /*
  * #%L
@@ -57,7 +58,7 @@ public class ValidateServiceDescriptorTest
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(baos, false, CHARSET_UTF_8);
-        Reporter reporter = new Reporter(ps, ReportType.values(), 10, false, 1024);
+        Reporter reporter = new TextOutputReporter(ps, ReportType.values(), 10, false, 1024);
         String xmlContent = FileUtils.readFileToString(new File("src/test/resources/service-descriptor-v1_3-good.xml"));
         vsd.verifyServiceDescriptor(reporter, xmlContent);
 
@@ -77,7 +78,7 @@ public class ValidateServiceDescriptorTest
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(baos, false, CHARSET_UTF_8);
-        Reporter reporter = new Reporter(ps, ReportType.values(), 10, false, 1024);
+        Reporter reporter = new TextOutputReporter(ps, ReportType.values(), 10, false, 1024);
         String xmlContent = FileUtils.readFileToString(new File("src/test/resources/service-descriptor-v1_2-good.xml"));
         vsd.verifyServiceDescriptor(reporter, xmlContent);
 
@@ -97,7 +98,7 @@ public class ValidateServiceDescriptorTest
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(baos, false, CHARSET_UTF_8);
-        Reporter reporter = new Reporter(ps, ReportType.values(), 10, false, 1024);
+        Reporter reporter = new TextOutputReporter(ps, ReportType.values(), 10, false, 1024);
         String xmlContent =
                 FileUtils.readFileToString(new File("src/test/resources/service-descriptor-v1_3-badparams.xml"));
         vsd.verifyServiceDescriptor(reporter, xmlContent);
@@ -128,7 +129,7 @@ public class ValidateServiceDescriptorTest
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(baos, false, CHARSET_UTF_8);
-        Reporter reporter = new Reporter(ps, ReportType.values(), 10, false, 1024);
+        Reporter reporter = new TextOutputReporter(ps, ReportType.values(), 10, false, 1024);
         String xmlContent = FileUtils.readFileToString(new File("src/test/resources/service-descriptor-v1_2-good.xml"));
         vsd.verifyResponseWithVotLint(reporter, xmlContent);
 
@@ -149,7 +150,7 @@ public class ValidateServiceDescriptorTest
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(baos, false, CHARSET_UTF_8);
-        Reporter reporter = new Reporter(ps, ReportType.values(), 10, false, 1024);
+        Reporter reporter = new TextOutputReporter(ps, ReportType.values(), 10, false, 1024);
         String xmlContent = FileUtils.readFileToString(new File("src/test/resources/service-descriptor-v1_3-good.xml"));
         vsd.verifyResponseWithVotLint(reporter, xmlContent);
 
@@ -170,7 +171,7 @@ public class ValidateServiceDescriptorTest
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(baos, false, CHARSET_UTF_8);
-        Reporter reporter = new Reporter(ps, ReportType.values(), 10, false, 1024);
+        Reporter reporter = new TextOutputReporter(ps, ReportType.values(), 10, false, 1024);
         String xmlContent =
                 FileUtils.readFileToString(new File("src/test/resources/service-descriptor-v1_3-badref.xml"));
         vsd.verifyResponseWithVotLint(reporter, xmlContent);

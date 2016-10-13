@@ -1,8 +1,11 @@
 package au.csiro.casda.sodalint;
 
+import java.net.URL;
+
 import uk.ac.starlink.ttools.taplint.IvoaSchemaResolver;
 import uk.ac.starlink.ttools.taplint.Reporter;
 import uk.ac.starlink.ttools.taplint.XsdStage;
+import uk.ac.starlink.vo.EndpointSet;
 
 /*
  * #%L
@@ -28,10 +31,17 @@ public class ValidateCapabilitiesXsd implements SodaValidationTask
     @Override
     public void run(Reporter reporter, SodaService sodaService, String testDataProductId)
     {
-        XsdStage tcapXsdStage = XsdStage.createXsdStage(IvoaSchemaResolver.CAPABILITIES_URI, "capabilities",
-                "/capabilities", true, "capabilities");
+        XsdStage tcapXsdStage = new XsdStage(IvoaSchemaResolver.AVAILABILITY_URI, "capabilities", true, "capabilities")
+        {
+            public URL getDocumentUrl(EndpointSet endpointSet)
+            {
+                return endpointSet.getCapabilitiesEndpoint();
+            }
+        };
 
-        tcapXsdStage.run(reporter, sodaService.getServiceUrl());
+        BaseEndpointSet endpointSet = new BaseEndpointSet(sodaService.getServiceUrl());
+
+        tcapXsdStage.run(reporter, endpointSet);
     }
 
 }

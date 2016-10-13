@@ -18,7 +18,7 @@ import org.apache.commons.lang3.StringUtils;
 import uk.ac.starlink.task.Executable;
 import uk.ac.starlink.task.TaskException;
 import uk.ac.starlink.ttools.taplint.ReportType;
-import uk.ac.starlink.ttools.taplint.Reporter;
+import uk.ac.starlink.ttools.taplint.TextOutputReporter;
 
 /*
  * #%L
@@ -56,7 +56,7 @@ public class SodaLinter
      * @return SODA validator executable
      * @throws TaskException if the stage code is not recognised.
      */
-    public Executable createExecutable(final Reporter reporter, final URL serviceUrl, Set<String> stageCodeSet,
+    public Executable createExecutable(final TextOutputReporter reporter, final URL serviceUrl, Set<String> stageCodeSet,
             final String testDataProductId) throws TaskException
     {
 
@@ -84,12 +84,9 @@ public class SodaLinter
             public void execute()
             {
                 SodaService sodaService = new SodaService(serviceUrl);
-                for (String line : Arrays.asList(getAnnouncements()))
-                {
-                    reporter.println(line);
-                }
-                reporter.println("Running stages: " + stages);
-                reporter.start();
+                List<String> announcements = getAnnouncements();
+                announcements.add("Running stages: " + stages);
+                reporter.start(announcements.toArray(new String[0]));
                 for (Stage stage : stages)
                 {
                     reporter.startSection(stage.getCode(), stage.toString());
@@ -107,7 +104,7 @@ public class SodaLinter
      *
      * @return announcement lines
      */
-    private static String[] getAnnouncements()
+    private static List<String> getAnnouncements()
     {
 
         /* Version report. */
@@ -134,7 +131,10 @@ public class SodaLinter
         String codesLine = cbuf.toString();
 
         /* Return lines. */
-        return new String[] { versionLine, codesLine };
+        List<String> announcements = new ArrayList<>();
+        announcements.add(versionLine);
+        announcements.add(codesLine);
+        return announcements;
     }
 
     private static String getSodaLintVersion()
@@ -213,7 +213,7 @@ public class SodaLinter
                     + "[maxrepeat=<int-value>] [truncate=<int-value>] [sodaurl=]<url-value>");
             System.exit(1);
         }
-        Reporter reporter = new Reporter(System.out, ReportType.values(), maxRepeat, false, maxLineLen);
+        TextOutputReporter reporter = new TextOutputReporter(System.out, ReportType.values(), maxRepeat, false, maxLineLen);
         // URL serviceUrl = new URL("https://casda-dev-app.pawsey.org.au/casda_data_access/data/");
         URL serviceUrl = new URL(sodaUrl);
         String[] defaultStages =

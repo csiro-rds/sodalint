@@ -19,18 +19,24 @@ ext {
 
 // In this section you declare where to find the dependencies of your project
 repositories {
-    // Use 'jcenter' for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
     mavenLocal()
-	maven { url 'http://jenkins-cdc.it.csiro.au:8085/nexus/content/repositories/thirdparty' }
+    jcenter()
+    ivy {
+        url 'https://github.com/csiro-rds/sodalint/raw/master/'
+        layout ('pattern') {
+            artifact 'external-libs/[artifact]-[revision](-[classifier])(.[ext])'
+        }
+    }
+    maven { url 'http://jenkins-cdc.it.csiro.au:8085/nexus/content/repositories/thirdparty' }
 }
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
-    // The production code uses the SLF4J logging API at compile time
-    //compile 'org.slf4j:slf4j-api:1.7.12'
-	compile("uk.ac.starlink:stilts:3.0.6")
+	compile("uk.ac.starlink:task:3.0.9")
+	compile("uk.ac.starlink:ttools:3.0.9")
+	compile("uk.ac.starlink:vo:3.0.9")
+	compile("uk.ac.starlink:votable:3.0.9")
+	
     compile('org.apache.httpcomponents:httpclient:4.5.2') 
     compile('org.apache.httpcomponents:fluent-hc:4.5.2') 
      // For things like RandomStringUtils, StringUtils
@@ -44,6 +50,9 @@ dependencies {
     testCompile 'junit:junit:4.12'
     // For things like FilenameUtils
     testCompile('commons-io:commons-io:2.4')
+
+    runtime('uk.ac.starlink:table:3.0.9')
+    runtime('uk.ac.starlink:util:3.0.9')
 }
 
 
