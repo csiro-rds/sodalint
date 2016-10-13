@@ -7,7 +7,8 @@ It can be used either as a library or as a command line tool.
 
 SODALint is intended for use both by central validation services and teams implementing SODA services.
 
-This program has been produced by the CSIRO ASKAP Science Data Archive team. It is heavily based on the [taplint](http://www.star.bristol.ac.uk/~mbt/stilts/sun256/taplint.html) program written by Mark Taylor.
+This program has been produced by the CSIRO ASKAP Science Data Archive team. It is heavily based on the [taplint](http://www.star.bristol.ac.uk/~mbt/stilts/sun256/taplint.html) 
+program written by Mark Taylor.
 
 Usage
 =====
