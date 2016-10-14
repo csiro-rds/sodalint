@@ -2,12 +2,13 @@ SODA Lint
 =========
 
 This program validates a Service-side Operations for Data Access (SODA) Virtual 
-Observatory service for compliance with the SODA v1 specification. 
+Observatory service for compliance with the SODA v1 specification (PR-SODA-1.0-20160920). 
 It can be used either as a library or as a command line tool. 
 
 SODALint is intended for use both by central validation services and teams implementing SODA services.
 
-This program has been produced by the CSIRO ASKAP Science Data Archive team. It is heavily based on the [taplint](http://www.star.bristol.ac.uk/~mbt/stilts/sun256/taplint.html) program written by Mark Taylor.
+This program has been produced by the CSIRO ASKAP Science Data Archive team. It is heavily based on the [taplint](http://www.star.bristol.ac.uk/~mbt/stilts/sun256/taplint.html) 
+program written by Mark Taylor.
 
 Usage
 =====
@@ -15,7 +16,7 @@ Usage
 The command line can be used as follows:
  
 ```
-java -jar sodalint-all-1.0.2.jar 
+java -jar sodalint-all-1.0.3.jar 
 		[stages="CPV|CAP|AVV|EXM|SVD|ERR|SYN|ASY[ ...]"]
 		[maxrepeat=<int-value>]
 		[truncate=<int-value>]
@@ -37,37 +38,42 @@ The parameters are:
 
 * truncate: The maximum line length that will be output. The default value is 1024.
 
-* sodaurl: The url to be tested. The prefix is optional. 	 
+* sodaurl: The url to be tested. This should be the base url for the service, which is the parent of the capabilities endpoint. The prefix is optional. 	 
 
 
 Example
 -------
 ```
-java -jar sodalint-all-1.0.2.jar stages="CPV AVV CAP SVD ASY" https://casda.csiro.au/casda_data_access/data/
+java -jar sodalint-all-1.0.3.jar stages="CPV AVV CAP SVD ASY" https://casda.csiro.au/casda_data_access/data/
 ```
 
 This will run the CPV, CAP, AVV, SVD, ASY stages (in that order) against the CASDA SODA service. The default maxrepeat and line length values are used. 
 
+Release History
+---------------
+
+Current Release: v1.0.3
+
+Notes for each release are available at  [release_notes.md](./release_notes.md)
+
 License
 =======
 
-The code in this project is licensed under the CSIRO Open Source Licence (Apache styled) however some 
-libraries used include GPL code so the combined product is licensed currently under the GPL.
+The code in this project is licensed under the CSIRO Open Source Licence (MIT/BSD styled).
+
 
 Build
 =====
 
 To build the project, checkout the project, cd to the project folder and use the following command line
 
-``` 
-gradlew clean build alljar
-```
 
-Note that while most libraries will be automatically retrieved by this build process, some are not available in public repositories and must be sourced manually and then locally installed. These are listed below.
+On Windows:
 
+> `gradlew clean build allJar`
 
-* Stilts - available from http://www.star.bristol.ac.uk/~mbt/stilts/#install and can be installed using the command:
-```
-mvn install:install-file -Dfile=stilts.jar -DgroupId=uk.ac.starlink -DartifactId=stilts -Dversion=3.0.6 -Dpackaging=jar
-```
+On Unix or Mac:
 
+> `./gradlew clean build allJar`
+
+The Gradle build is configured to download all dependencies, compile the code, run the unit tests and build the jar files. 

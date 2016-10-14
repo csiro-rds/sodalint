@@ -26,6 +26,8 @@ public enum SodaCode implements ReportCode
     I_SYNO(), 
     /** No async endpoint to test */
     I_ASNO,
+    /** Report the URL being tested */
+    I_VURL,
 
     /** Unsupported standard filter parameter. */
     W_SDSP,

@@ -48,6 +48,7 @@ public class ValidateAsync extends Validator implements SodaValidationTask
         try
         {
             URL asyncUrl = sodaService.getUrlFromCapabilityNode(asyncNode);
+            reporter.report(SodaCode.I_VURL, "Validating URL: " + asyncUrl);
             // Check endpoint exists
             getAsyncContent(reporter, asyncUrl);
         }

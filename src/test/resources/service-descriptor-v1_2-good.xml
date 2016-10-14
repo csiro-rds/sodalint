@@ -16,7 +16,7 @@
 				arraysize="*" />
 
 			<vot:PARAM name="POS" ucd="phys.angArea;obs" datatype="char"
-				arraysize="*">
+				arraysize="*" xtype="region">
 			</vot:PARAM>
 			<vot:PARAM name="CIRCLE" ucd="phys.angArea;obs" unit="deg" datatype="double"
 				arraysize="3" xtype="circle">
@@ -25,10 +25,10 @@
 				arraysize="*" xtype="polygon">
 			</vot:PARAM>
 			<vot:PARAM name="BAND" ucd="em.wl" unit="m" datatype="double"
-				arraysize="*" xtype="interval">
+				arraysize="2" xtype="interval">
 			</vot:PARAM>
 			<vot:PARAM name="TIME" ucd="time.interval;obs.exposure" unit="d"
-				datatype="double" arraysize="*" xtype="interval">
+				datatype="double" arraysize="2" xtype="interval">
 			</vot:PARAM>
 			<vot:PARAM name="POL" ucd="meta.code;phys.polarization" datatype="char"
 				arraysize="*">

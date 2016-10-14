@@ -1,5 +1,7 @@
 package au.csiro.casda.sodalint;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,6 +9,7 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -15,7 +18,7 @@ import org.apache.commons.lang3.StringUtils;
 import uk.ac.starlink.task.Executable;
 import uk.ac.starlink.task.TaskException;
 import uk.ac.starlink.ttools.taplint.ReportType;
-import uk.ac.starlink.ttools.taplint.Reporter;
+import uk.ac.starlink.ttools.taplint.TextOutputReporter;
 
 /*
  * #%L
@@ -37,6 +40,8 @@ import uk.ac.starlink.ttools.taplint.Reporter;
 public class SodaLinter
 {
 
+    private static final String SODA_VERSION = "PR-SODA-1.0-20160920";
+    
     /**
      * Creates and returns an executable for TAP validation.
      *
@@ -51,7 +56,7 @@ public class SodaLinter
      * @return SODA validator executable
      * @throws TaskException if the stage code is not recognised.
      */
-    public Executable createExecutable(final Reporter reporter, final URL serviceUrl, Set<String> stageCodeSet,
+    public Executable createExecutable(final TextOutputReporter reporter, final URL serviceUrl, Set<String> stageCodeSet,
             final String testDataProductId) throws TaskException
     {
 
@@ -79,12 +84,9 @@ public class SodaLinter
             public void execute()
             {
                 SodaService sodaService = new SodaService(serviceUrl);
-                for (String line : Arrays.asList(getAnnouncements()))
-                {
-                    reporter.println(line);
-                }
-                reporter.println("Running stages: " + stages);
-                reporter.start();
+                List<String> announcements = getAnnouncements();
+                announcements.add("Running stages: " + stages);
+                reporter.start(announcements.toArray(new String[0]));
                 for (Stage stage : stages)
                 {
                     reporter.startSection(stage.getCode(), stage.toString());
@@ -102,13 +104,13 @@ public class SodaLinter
      *
      * @return announcement lines
      */
-    private static String[] getAnnouncements()
+    private static List<String> getAnnouncements()
     {
 
         /* Version report. */
-        String versionLine = new StringBuilder().append("This is sodalint, ")
-                // .append( Stilts.getVersion() )
-                .toString();
+        String version = getSodaLintVersion();
+        String versionLine = new StringBuilder().append("This is sodalint ").append(version)
+                .append(" validating against ").append(SODA_VERSION).toString();
 
         /* Count by report type of known FixedCode instances. */
         Map<ReportType, int[]> codeMap = new LinkedHashMap<ReportType, int[]>();
@@ -129,7 +131,29 @@ public class SodaLinter
         String codesLine = cbuf.toString();
 
         /* Return lines. */
-        return new String[] { versionLine, codesLine };
+        List<String> announcements = new ArrayList<>();
+        announcements.add(versionLine);
+        announcements.add(codesLine);
+        return announcements;
+    }
+
+    private static String getSodaLintVersion()
+    {
+        Properties props = new Properties();
+        try
+        {
+            InputStream resourceAsStream = SodaLinter.class.getResourceAsStream("/version.properties");
+            if (resourceAsStream != null)
+            {
+                props.load(resourceAsStream);
+            }
+        }
+        catch (IOException e)
+        {
+            System.out.println("Unable to load version.properties: " + e.getMessage());
+        }
+        String version = props.getProperty("build.number");
+        return version == null ? "" : version;
     }
 
     /**
@@ -189,7 +213,7 @@ public class SodaLinter
                     + "[maxrepeat=<int-value>] [truncate=<int-value>] [sodaurl=]<url-value>");
             System.exit(1);
         }
-        Reporter reporter = new Reporter(System.out, ReportType.values(), maxRepeat, false, maxLineLen);
+        TextOutputReporter reporter = new TextOutputReporter(System.out, ReportType.values(), maxRepeat, false, maxLineLen);
         // URL serviceUrl = new URL("https://casda-dev-app.pawsey.org.au/casda_data_access/data/");
         URL serviceUrl = new URL(sodaUrl);
         String[] defaultStages =
