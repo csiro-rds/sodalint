@@ -75,7 +75,7 @@ task allJar(type: Jar) {
         	'Main-Class': 'au.csiro.casda.sodalint.SodaLinter'
     }
     baseName = project.name + '-all'
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    from { configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }
 
