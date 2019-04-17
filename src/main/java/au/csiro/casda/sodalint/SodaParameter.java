@@ -25,7 +25,7 @@ import org.apache.commons.lang3.StringUtils;
 public enum SodaParameter
 {
     /** The ID image selection parameter*/
-    ID("meta.ref.url;meta.curation", "", "char", "*", ""), 
+    ID("meta.id;meta.dataset", "", "char", "*", ""), 
     /** The general POS filter parameter for spatial regions. */
     POS("phys.angArea;obs", "", "char", "*", "region"), 
     /** The BAND filter parameter for wavelength cutouts. */

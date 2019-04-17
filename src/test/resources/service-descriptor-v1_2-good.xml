@@ -12,7 +12,7 @@
 			value="http://example.com/SODA/sync" />
 
 		<vot:GROUP name="inputParams">
-			<vot:PARAM name="ID" ucd="meta.ref.url;meta.curation" datatype="char"
+			<vot:PARAM name="ID" ucd="meta.id;meta.dataset" datatype="char"
 				arraysize="*" />
 
 			<vot:PARAM name="POS" ucd="phys.angArea;obs" datatype="char"

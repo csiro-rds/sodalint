@@ -14,7 +14,7 @@
 			value="http://example.com/SODA/sync" />
 
 		<GROUP name="inputParams">
-			<PARAM name="FID" ucd="meta.ref.url;meta.curation" datatype="char"
+			<PARAM name="FID" ucd="meta.id;meta.dataset" datatype="char"
 				 />
 
 			<PARAM name="POS" ucd="phys.angArea;obs;a" datatype="char"
