@@ -29,7 +29,7 @@ public enum SodaParameter
     /** The general POS filter parameter for spatial regions. */
     POS("phys.angArea;obs", "", "char", "*", "region"), 
     /** The BAND filter parameter for wavelength cutouts. */
-    BAND("em.wl", "m", "double", "2", "interval"), 
+    BAND("em.wl;stat.interval", "m", "double", "2", "interval"), 
     /** The TIME filter parameter for time cutouts. */
     TIME("time.interval;obs.exposure", "d", "double", "2", "interval"), 
     /** The POL filter parameter for polarisation cutouts. */
