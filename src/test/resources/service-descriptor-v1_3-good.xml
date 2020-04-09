@@ -26,7 +26,7 @@
 			<PARAM name="POLYGON" ucd="phys.angArea;obs" unit="deg" datatype="double"
 				arraysize="*" xtype="polygon">
 			</PARAM>
-			<PARAM name="BAND" ucd="em.wl" unit="m" datatype="double"
+			<PARAM name="BAND" ucd="em.wl;stat.interval" unit="m" datatype="double"
 				arraysize="2" xtype="interval">
 			</PARAM>
 			<PARAM name="TIME" ucd="time.interval;obs.exposure" unit="d"
