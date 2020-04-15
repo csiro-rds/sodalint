@@ -47,11 +47,13 @@ allprojects {
     
 }
 
-task echoVer() << {
-    println "${project.name} Version: ${project.version}"
+task echoVer() {
+	doLast{
+	    println "${project.name} Version: ${project.version}"
+	}
 }
 
-task makeVersionProps (type:Copy) {
+task makeVersionProps (type: Copy) {
     description 'Create a version.properties file with the version info and overwrite the default one'
 
     from("${projectDir}/gradle/version.properties.template")
