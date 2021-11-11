@@ -5,7 +5,7 @@ import java.net.URL;
 import uk.ac.starlink.ttools.taplint.IvoaSchemaResolver;
 import uk.ac.starlink.ttools.taplint.Reporter;
 import uk.ac.starlink.ttools.taplint.XsdStage;
-import uk.ac.starlink.vo.EndpointSet;
+import uk.ac.starlink.vo.TapService;
 
 /*
  * #%L
@@ -33,7 +33,7 @@ public class ValidateCapabilitiesXsd implements SodaValidationTask
     {
         XsdStage tcapXsdStage = new XsdStage(IvoaSchemaResolver.AVAILABILITY_URI, "capabilities", true, "capabilities")
         {
-            public URL getDocumentUrl(EndpointSet endpointSet)
+            public URL getDocumentUrl(TapService endpointSet)
             {
                 return endpointSet.getCapabilitiesEndpoint();
             }

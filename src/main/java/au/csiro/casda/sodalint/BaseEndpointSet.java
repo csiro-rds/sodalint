@@ -3,15 +3,15 @@ package au.csiro.casda.sodalint;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import uk.ac.starlink.vo.EndpointSet;
-
+import uk.ac.starlink.vo.TapService;
+import uk.ac.starlink.vo.TapVersion;
 /**
  * Minimal implementation of EndpointSet for use in XSD validation of pages.
  *  
  * <p>
  * Copyright 2016, CSIRO Australia. All rights reserved.
  */
-public class BaseEndpointSet implements EndpointSet
+public class BaseEndpointSet implements TapService
 {
 
     private URL serviceUrl;
@@ -80,5 +80,11 @@ public class BaseEndpointSet implements EndpointSet
             return null;
         }
     }
+
+	@Override
+	public TapVersion getTapVersion() 
+	{
+		return null;
+	}
 
 }

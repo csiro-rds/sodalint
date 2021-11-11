@@ -3,7 +3,6 @@ package au.csiro.casda.sodalint;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 
 import org.apache.commons.lang3.StringUtils;
@@ -15,9 +14,6 @@ import org.apache.http.client.fluent.Request;
 import org.apache.http.client.fluent.Response;
 import org.apache.http.entity.ContentType;
 import org.w3c.dom.Document;
-
-import com.sun.org.apache.xml.internal.serialize.OutputFormat;
-import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 
 /*
  * #%L
@@ -112,19 +108,19 @@ public class Validator
      */
     protected void logDocumentContent(Document document)
     {
-        OutputFormat format = new OutputFormat(document);
-        StringWriter stringOut = new StringWriter();
-        XMLSerializer serial = new XMLSerializer(stringOut, format);
-        try
-        {
-            serial.serialize(document);
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-        // Display the XML
-        System.out.println(stringOut.toString());
+//        OutputFormat format = new OutputFormat(document);
+//        StringWriter stringOut = new StringWriter();
+//        XMLSerializer serial = new XMLSerializer(stringOut, format);
+//        try
+//        {
+//            serial.serialize(document);
+//        }
+//        catch (IOException e)
+//        {
+//            e.printStackTrace();
+//        }
+//        // Display the XML
+//        System.out.println(stringOut.toString());
     }
 
 }

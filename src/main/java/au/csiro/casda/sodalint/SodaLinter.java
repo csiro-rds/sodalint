@@ -140,9 +140,8 @@ public class SodaLinter
     private static String getSodaLintVersion()
     {
         Properties props = new Properties();
-        try
-        {
-            InputStream resourceAsStream = SodaLinter.class.getResourceAsStream("/version.properties");
+		try (InputStream resourceAsStream = SodaLinter.class.getResourceAsStream("/version.properties"))
+		{
             if (resourceAsStream != null)
             {
                 props.load(resourceAsStream);

@@ -178,7 +178,13 @@ public class ValidateServiceDescriptorTest
 
         String result = baos.toString(CHARSET_UTF_8);
         System.out.println(result);
-        assertEquals("Message should have been reported",
-                "E-VOFY-01 : ID bad referenced from PARAM (l.30, c.29) never found", result.trim());
+		String[] expectedMessages = new String[] {
+				"E-YJVB-01 (l.34, c.11): cvc-id.1: There is no ID/IDREF binding for IDREF 'bad'.",
+				"E-YNFI-01 : ID bad referenced from PARAM (l.30, c.38) never found" };
+
+        assertEquals("Messages should have been reported", StringUtils.join(expectedMessages, System.lineSeparator()),
+                result.trim());
     }
+
+
 }
