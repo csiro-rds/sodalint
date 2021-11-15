@@ -40,7 +40,7 @@ import uk.ac.starlink.ttools.taplint.TextOutputReporter;
 public class SodaLinter
 {
 
-    private static final String SODA_VERSION = "PR-SODA-1.0-20160920";
+    private static final String SODA_VERSION = "Rec-SODA-1.0-20170517";
     
     /**
      * Creates and returns an executable for TAP validation.
