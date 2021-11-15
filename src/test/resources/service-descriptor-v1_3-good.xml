@@ -15,25 +15,25 @@
 
 		<GROUP name="inputParams">
 			<PARAM name="ID" ucd="meta.id;meta.dataset" datatype="char"
-				arraysize="*" />
+				arraysize="*" value=""/>
 
 			<PARAM name="POS" ucd="phys.angArea;obs" datatype="char"
-				arraysize="*" xtype="region">
+				arraysize="*" value="">
 			</PARAM>
 			<PARAM name="CIRCLE" ucd="phys.angArea;obs" unit="deg" datatype="double"
-				arraysize="3" xtype="circle">
+				arraysize="3" xtype="circle" value="">
 			</PARAM>
 			<PARAM name="POLYGON" ucd="phys.angArea;obs" unit="deg" datatype="double"
-				arraysize="*" xtype="polygon">
+				arraysize="*" xtype="polygon" value="">
 			</PARAM>
 			<PARAM name="BAND" ucd="em.wl;stat.interval" unit="m" datatype="double"
-				arraysize="2" xtype="interval">
+				arraysize="2" xtype="interval" value="">
 			</PARAM>
 			<PARAM name="TIME" ucd="time.interval;obs.exposure" unit="d"
-				datatype="double" arraysize="2" xtype="interval">
+				datatype="double" arraysize="2" xtype="interval" value="">
 			</PARAM>
 			<PARAM name="POL" ucd="meta.code;phys.polarization" datatype="char"
-				arraysize="*">
+				arraysize="*" value="">
 			</PARAM>
 		</GROUP>
 	</RESOURCE>

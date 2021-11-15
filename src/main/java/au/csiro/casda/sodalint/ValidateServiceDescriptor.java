@@ -148,7 +148,7 @@ public class ValidateServiceDescriptor extends Validator implements SodaValidati
             Document document = builder.parse(is);
 
             // Check for resource with appropriate standard ID
-            Node sodaSvcNode = getSodaServiceResource(reporter, document);
+            Node sodaSvcNode = getSodaServiceResource(document);
             if (sodaSvcNode == null)
             {
                 reporter.report(SodaCode.E_SDNO, "No service descriptor resource found in default sync repsonse.");
@@ -177,7 +177,7 @@ public class ValidateServiceDescriptor extends Validator implements SodaValidati
 
     }
 
-    private Node getSodaServiceResource(Reporter reporter, Document document) throws XPathExpressionException
+    private Node getSodaServiceResource(Document document) throws XPathExpressionException
     {
         // logDocumentContent(document);
 

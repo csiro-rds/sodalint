@@ -16,7 +16,7 @@
 				arraysize="*" />
 
 			<vot:PARAM name="POS" ucd="phys.angArea;obs" datatype="char"
-				arraysize="*" xtype="region">
+				arraysize="*">
 			</vot:PARAM>
 			<vot:PARAM name="CIRCLE" ucd="phys.angArea;obs" unit="deg" datatype="double"
 				arraysize="3" xtype="circle">

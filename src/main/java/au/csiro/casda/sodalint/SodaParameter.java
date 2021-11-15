@@ -27,7 +27,7 @@ public enum SodaParameter
     /** The ID image selection parameter*/
     ID("meta.id;meta.dataset", "", "char", "*", ""), 
     /** The general POS filter parameter for spatial regions. */
-    POS("phys.angArea;obs", "", "char", "*", "region"), 
+    POS("phys.angArea;obs", "", "char", "*", ""), 
     /** The BAND filter parameter for wavelength cutouts. */
     BAND("em.wl;stat.interval", "m", "double", "2", "interval"), 
     /** The TIME filter parameter for time cutouts. */

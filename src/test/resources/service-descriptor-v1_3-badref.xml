@@ -15,19 +15,19 @@
 
 		<GROUP name="inputParams">
 			<PARAM name="ID" ucd="meta.id;meta.dataset" datatype="char"
-				arraysize="*" />
+				arraysize="*" value=""/>
 
 			<PARAM name="POS" ucd="phys.angArea;obs" datatype="char"
-				arraysize="*">
+				arraysize="*" value="">
 			</PARAM>
 			<PARAM name="BAND" ucd="em.wl" unit="m" datatype="double"
-				arraysize="*" xtype="interval">
+				arraysize="2" xtype="interval" value="">
 			</PARAM>
 			<PARAM name="TIME" ucd="time.interval;obs.exposure" unit="d"
-				datatype="double" arraysize="*" xtype="interval">
+				datatype="double" arraysize="2" xtype="interval" value="">
 			</PARAM>
 			<PARAM name="POL" ucd="meta.code;phys.polarization" datatype="char"
-				arraysize="*" ref="bad">
+				arraysize="*" ref="bad" value="">
 			</PARAM>
 		</GROUP>
 	</RESOURCE>

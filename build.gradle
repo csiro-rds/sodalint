@@ -1,16 +1,17 @@
 /**
  * Gradle build script for CSIRO CASDA SODALint library.
- * Built for Gradle v2.7
+ * Built for Gradle v6.9.1
  * 
  */
 
 plugins {
-  id "com.github.spotbugs" version "1.6.9"
+  id "com.github.spotbugs" version "4.6.0"
 }
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 apply plugin: 'maven-publish'
+apply plugin: 'eclipse-wtp'
 
 group = 'au.csiro.casda'
 
@@ -20,6 +21,9 @@ ext {
     majorVersion = 1
     minorVersion = 0
 }
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -31,21 +35,20 @@ repositories {
             artifact 'external-libs/[artifact]-[revision](-[classifier])(.[ext])'
         }
     }
-    maven { url 'http://jenkins-cdc.it.csiro.au:8085/nexus/content/repositories/thirdparty' }
+    maven { url 'https://nexus-isa.csiro.au/repository/thirdparty' }
 }
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
-	compile("uk.ac.starlink:task:3.0.9")
-	compile("uk.ac.starlink:ttools:3.0.9")
-	compile("uk.ac.starlink:vo:3.0.9")
-	compile("uk.ac.starlink:votable:3.0.9")
+	compile("uk.ac.starlink:stil:4.0.4")
+	compile("uk.ac.starlink:task:3.4.2")
+	compile("uk.ac.starlink:ttools:3.4.2")
+	compile("uk.ac.starlink:vo:3.4.2")
 	
     compile('org.apache.httpcomponents:httpclient:4.5.2') 
     compile('org.apache.httpcomponents:fluent-hc:4.5.2') 
      // For things like RandomStringUtils, StringUtils
     compile("org.apache.commons:commons-lang3:3.4")
-    //compile("org.apache.ws.commons:ws-commons-util:1.0.1")
 
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the
@@ -54,9 +57,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     // For things like FilenameUtils
     testCompile('commons-io:commons-io:2.4')
-
-    runtime('uk.ac.starlink:table:3.0.9')
-    runtime('uk.ac.starlink:util:3.0.9')
 }
 
 
